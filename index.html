@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="css/stylesheet.css" type="text/css">
+    <title>Etch-A-Sketch</title>
+  </head>
+  <body>
+    <button id="reset">Reset Canvas</button>
+    <div id='container'>
+
+    </div>
+  </body>
+  <script>
+    const cont = document.querySelector('#container');
+    const resetBtn = document.querySelector('#reset');
+    cont.style.height = "100%";
+    cont.style.width = "100%";
+    cont.style.display = "grid";
+    cont.style.gridTemplateRows = "auto auto auto auto";
+    cont.style.gridTemplateColumns = "auto auto auto auto";
+    cont.style.borderStyle = 'solid';
+    cont.style.borderwidth = '1px';
+
+    for (i=0; i < 16; i++) {
+        const box = document.createElement('div');
+        box.setAttribute('id', i);
+        box.style.borderStyle = 'solid';
+        box.style.borderwidth = '1px';
+        box.addEventListener('mouseover', updateBackground);
+        cont.appendChild(box);
+    }
+
+    resetBtn.addEventListener('click',() => resetBoard());
+
+    function resetBoard() {
+        const boxes = document.querySelectorAll('#container div');
+        boxes.forEach((box) => {
+            box.remove();
+        })
+        squares = prompt('How many squares would you like on each side of the grid?');
+        if (!(isNaN( squares )) && (squares) && (squares > 0)) {
+          const autos = createAutos(squares);
+          cont.style.gridTemplateRows = autos;
+          cont.style.gridTemplateColumns = autos;
+          for (i = 0; i < squares ** 2; i++) {
+            makeGrid(i);
+        }} else {
+            resetBoard();
+        }
+    }
+
+    function createAutos(squares) {
+        result = '';
+        for (i=0; i < squares; i++) {
+          result += 'auto ';
+        }
+        return result;
+    }
+
+    function makeGrid(i) {
+        const box = document.createElement('div');
+        box.setAttribute('id', i);
+        box.style.borderStyle = 'solid';
+        box.addEventListener('mouseover', updateBackground);
+        cont.appendChild(box);
+    }
+
+    function updateBackground(e) {
+        const box = e.target;
+        for (i=1; i < 6; i++) {
+            if (box.classList[0] === `color${i}`) {
+                box.classList.remove(`color${i}`);
+                box.classList.add(`color${i+1}`);
+                break;
+            } else if (i == 10) {
+                continue;
+            } else {
+                box.classList.add('color1');
+            }
+        }
+    }
+
+    
+
+  </script>
+</html>

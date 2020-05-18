@@ -1,0 +1,42 @@
+html {
+    min-height: 100%;
+    position: relative;
+}
+body {
+    height: 100%;
+}
+#container {
+    position: absolute;
+    top: 70px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+}
+#reset {
+    text-align: center;
+    display: block;
+    background-color: pink;
+    border: none;
+    color: black;
+    padding: 15px 32px;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 0 auto;
+}
+
+.color1 {
+    background-color:hsla(294, 100%, 80%, 1);
+}
+.color2 {
+    background-color:hsla(294, 100%, 60%, 1);
+}
+.color3 {
+    background-color:hsla(294, 100%, 40%, 1);
+}
+.color4 {
+    background-color:hsla(294, 100%, 20%, 1);
+}
+.color5 {
+    background-color:hsla(294, 100%, 0%, 1);
+}
